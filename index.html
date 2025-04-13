@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trims.Project - Solusi Karya Ilmiah & Data Statistik</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #181818;
-            color: #f4f4f4;
+            background-color: #F4F4F4; /* Latar belakang abu-abu terang */
+            color: #333; /* Warna teks utama */
             line-height: 1.6;
             scroll-behavior: smooth;
         }
@@ -24,10 +27,10 @@
 
         /* Header/Navbar */
         header {
-            background-color: #222;
-            color: #fff;
+            background-color: #FFFFFF; /* Header putih */
+            color: #333; /* Warna teks header */
             padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -54,6 +57,7 @@
         .logo-text {
             font-size: 1.5em;
             font-weight: bold;
+            color: #EA7300; /* Warna logo oranye kecoklatan */
         }
 
         nav ul {
@@ -69,41 +73,45 @@
 
         nav ul li a {
             text-decoration: none;
-            color: #eee;
+            color: #555; /* Warna link navbar */
             transition: color 0.3s ease;
             font-weight: 500;
             font-size: 0.95em;
         }
 
         nav ul li a:hover {
-            color: #ff8c00;
+            color: #E83F25; /* Warna hover merah oranye cerah */
         }
 
-        /* Hero Section */
-        .hero {
+      /* Hero Section */
+ .hero {
             position: relative;
             overflow: hidden;
-            height: 450px;
+            min-height: 80vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            color: #fff;
-            text-align: center;
+            color: #333;
+            text-align: left;
             margin-bottom: 40px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            padding-bottom: 60px; /* Tambahkan padding bawah */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 0;
         }
 
-        .hero-image {
+        .hero-image-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            z-index: -1;
-            filter: brightness(60%);
             transition: transform 0.5s ease-in-out;
         }
 
@@ -117,71 +125,167 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
-            z-index: -1;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 5%;
         }
 
         .hero-content {
+            z-index: 2;
+            max-width: 50%;
+            text-align: left;
             padding: 20px;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center content horizontally */
+            background: none;
+            border-radius: 0;
         }
 
         .hero-title {
-            font-size: 2.8em;
-            margin-bottom: 10px;
+            font-size: 3em;
+            margin-bottom: 15px;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #2c3e50;
+            line-height: 1.3;
+            opacity: 0;
+            transform: translateY(-30px) translateX(10px);
+            animation: slideInRight 1s ease-out 0.3s forwards;
+            text-align: left;
         }
 
-        .hero-subtitle {
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateY(0) translateX(0);
+            }
         }
 
         .hero-motto {
             font-style: italic;
-            color: #ff8c00;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-            font-family: 'Brush Script MT', cursive;
+            color: #e67e22;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: right;
         }
 
         .hero-cta {
             display: inline-flex;
             align-items: center;
-            background-color: #ff8c00;
-            color: #fff;
-            padding: 12px 25px;
+            justify-content: center;
+            background-color: #3498db;
+            color: #FFFFFF;
+            padding: 15px 30px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-            margin-top: 20px; /* Berikan jarak tombol dari motto */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
         }
 
         .hero-cta:hover {
-            background-color: #e67e00;
+            background-color: #2980b9;
             transform: translateY(-2px);
         }
 
         .hero-cta svg {
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
+            margin-left: 10px;
+            width: 24px;
+            height: 24px;
             fill: currentColor;
         }
 
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Design untuk layar kecil */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center; /* Teks keseluruhan di tengah */
+        background-color: #f8f9fa;
+    }
+
+    .hero-image-container {
+        display: none;
+    }
+
+    .hero-overlay {
+        position: static;
+        width: 100%;
+        height: auto;
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .hero-content {
+        max-width: 100%; /* Lebar penuh */
+        text-align: center; /* Teks di dalam konten tengah */
+        padding: 0 20px;
+        background: none;
+        border-radius: 0;
+    }
+
+    .hero-title {
+        font-size: 2em;
+        line-height: 1.4;
+        color: #2c3e50;
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+        animation: none;
+        text-align: center; /* Teks judul rata tengah */
+        margin-bottom: 10px;
+    }
+
+    .hero-motto {
+        font-size: 1.1em;
+        text-align: center; /* Teks motto rata tengah */
+        color: #e67e22;
+        margin-bottom: 15px;
+    }
+
+    .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center; /* Tombol tengah */
+        background-color: #3498db;
+        color: #FFFFFF;
+        padding: 12px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto; /* Tombol tengah */
+    }
+
+    .hero-cta svg {
+        margin-left: 8px;
+        width: 20px;
+        height: 20px;
+    }
+}
         /* Services Section */
         .services {
             padding: 30px 20px;
-            background-color: #222;
+            background-color: #FFFFFF; /* Latar belakang putih */
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
         }
 
@@ -189,7 +293,7 @@
             font-size: 2.2em;
             text-align: center;
             margin-bottom: 25px;
-            color: #ff8c00;
+            color: #EA7300; /* Judul oranye kecoklatan */
             font-weight: bold;
         }
 
@@ -200,35 +304,35 @@
         }
 
         .service-card {
-            background-color: #333;
+            background-color: #F9F9F9; /* Latar belakang kartu abu-abu terang */
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             min-height: 220px;
-            border: 2px solid #444;
+            border: 1px solid #E0E0E0;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-            border-color: #ff8c00;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-color: #E83F25; /* Border hover merah oranye cerah */
         }
 
         .card-title {
             font-size: 1.5em;
-            color: #fff;
+            color: #333;
             margin-bottom: 10px;
             font-weight: bold;
-            border-bottom: 2px solid #ff8c00;
+            border-bottom: 2px solid #EA7300; /* Garis bawah oranye kecoklatan */
             padding-bottom: 5px;
         }
 
         .card-subtitle {
-            color: #ccc;
+            color: #777;
             margin-bottom: 8px;
             font-style: italic;
             font-size: 0.9em;
@@ -237,7 +341,7 @@
         .card-list {
             padding-left: 15px;
             margin-bottom: 15px;
-            color: #eee;
+            color: #555;
             font-size: 0.9em;
         }
 
@@ -262,19 +366,19 @@
         .card-cta {
             display: inline-flex;
             align-items: center;
-            background-color: #ff8c00;
-            color: #fff;
+            background-color: #E83F25; /* Tombol merah oranye cerah */
+            color: #FFFFFF;
             padding: 10px 20px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
             font-size: 0.9em;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .card-cta:hover {
-            background-color: #e67e00;
+            background-color: #C6341E; /* Hover lebih gelap */
             transform: translateY(-2px);
         }
 
@@ -287,8 +391,8 @@
 
         /* Why Choose Us Section */
         .why-choose-us {
-            background-color: #222;
-            color: #fff;
+            background-color: #D3CA79; /* Latar belakang kuning kecoklatan */
+            color: #333;
             padding: 30px 20px;
             border-radius: 8px;
             margin-bottom: 30px;
@@ -298,7 +402,7 @@
             font-size: 2.2em;
             text-align: center;
             margin-bottom: 25px;
-            color: #ff8c00;
+            color: #A62C2C; /* Judul merah kecoklatan */
             font-weight: bold;
         }
 
@@ -312,23 +416,25 @@
         .why-choose-item {
             padding: 15px;
             border-radius: 5px;
-            background-color: #333;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            background-color: #FFFFFF; /* Latar belakang item putih */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .why-choose-item:hover {
-            transform: scale(1.08);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            background-color: #FFE0B2; /* Warna hover lebih muda */
         }
 
         .why-choose-item h3 {
-            color: #ff8c00;
+            color: #EA7300; /* Judul oranye kecoklatan */
             margin-bottom: 10px;
             font-size: 1.1em;
         }
 
         .why-choose-item p {
-            color: #eee;
+            color: #555;
             font-size: 0.9em;
         }
 
@@ -337,14 +443,14 @@
             padding: 30px 20px;
             text-align: center;
             margin-bottom: 30px;
-            background-color: #222;
+            background-color: #FFFFFF; /* Latar belakang putih */
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .testimonials-title {
             font-size: 2.2em;
-            color: #ff8c00;
+            color: #A62C2C; /* Judul merah kecoklatan */
             margin-bottom: 25px;
             font-weight: bold;
         }
@@ -354,11 +460,11 @@
             width: 250px;
             height: 450px;
             margin: 20px auto;
-            border: 10px solid #333;
+            border: 10px solid #EA7300; /* Border oranye kecoklatan */
             border-radius: 30px;
-            background-color: #000;
+            background-color: #F0F0F0; /* Latar belakang abu-abu terang */
             overflow: hidden;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
         .screen {
@@ -367,7 +473,7 @@
             left: 15px;
             right: 15px;
             bottom: 60px;
-            background-color: #111;
+            background-color: #FFFFFF; /* Latar layar putih */
             border-radius: 15px;
             overflow: hidden;
         }
@@ -402,8 +508,8 @@
         }
 
         .slider-control-btn {
-            background-color: orange;
-            color: #fff;
+            background-color: #E83F25; /* Tombol merah oranye cerah */
+            color: #FFFFFF;
             border: none;
             padding: 8px 15px;
             margin: 0 5px;
@@ -414,41 +520,40 @@
         }
 
         .slider-control-btn:hover {
-            background-color: orange;
+            background-color: #C6341E; /* Hover lebih gelap */
         }
 
-        /* Contact Section (Diubah menjadi Layanan Konsultasi) */
+        /* Contact Section (Layanan Konsultasi) */
         .consultation-cta {
             text-align: center;
             padding: 30px 20px;
-            background-color: #222;
-            color: #fff;
-            border-radius: 8px;
+            background-color: #D3CA79; /* Latar belakang kuning kecoklatan */
+            color: #333;border-radius: 8px;
             margin-bottom: 30px;
         }
 
         .consultation-cta-title {
             font-size: 1.8em;
             margin-bottom: 15px;
-            color: #ff8c00;
+            color: #A62C2C; /* Judul merah kecoklatan */
             font-weight: bold;
         }
 
         .consultation-cta-button {
             display: inline-flex;
             align-items: center;
-            background-color: #007bff; /* Warna biru untuk konsultasi */
-            color: #fff;
+            background-color: #E83F25; /* Tombol merah oranye cerah */
+            color: #FFFFFF;
             padding: 12px 25px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
         }
 
         .consultation-cta-button:hover {
-            background-color: #0056b3;
+            background-color: #C6341E; /* Hover lebih gelap */
             transform: translateY(-2px);
         }
 
@@ -459,7 +564,7 @@
 
         /* Footer */
         footer {
-            background-color: #333;
+            background-color: #333; /* Footer abu-abu gelap */
             color: #eee;
             text-align: center;
             padding: 20px 0;
@@ -469,266 +574,278 @@
         }
 
         /* Desktop Styles */
-@media (min-width: 769px) {
-    nav .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+        @media (min-width: 769px) {
+            nav .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-    .hamburger-menu, .close-menu {
-        display: none; /* Sembunyikan di tampilan desktop */
-    }
+            .hamburger-menu, .close-menu {
+                display: none;
+            }
 
-    .nav-links {
-        display: block !important; /* Override potensi inline style */
-    }
+            .nav-links {
+                display: block !important;
+            }
 
-    .nav-links ul {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+            .nav-links ul {
+                display: flex;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
 
-    .nav-links ul li {
-        margin: 0 20px;
-        border-bottom: none !important;
-        padding-bottom: 0 !important;
-    }
+            .nav-links ul li {
+                margin: 0 20px;
+                border-bottom: none !important;
+                padding-bottom: 0 !important;
+            }
 
-    .nav-links ul li a {
-        color: #eee;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.95em;
-    }
+            .nav-links ul li a {
+                color: #555;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 0.95em;
+            }
 
-    .nav-links ul li a:hover {
-        color: #ff8c00;
-    }
+            .nav-links ul li a:hover {
+                color: #E83F25;
+            }
 
-    .desktop-nav {
-        display: none; /* Sembunyikan duplikat nav desktop */
-    }
-}
+            .desktop-nav {
+                display: none;
+            }
+        }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-    nav .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px; /* Sesuaikan padding container di mobile */
-    }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 20px;
+            }
 
-    .desktop-nav {
-        display: none; /* Sembunyikan navigasi desktop di mobile */
-    }
+            .desktop-nav {
+                display: none;
+            }
 
-    .hamburger-menu {
-        display: block; /* Tampilkan di tampilan ponsel */
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 1.5em;
-        cursor: pointer;
-        z-index: 1002; /* Lebih tinggi dari nav-links */
-    }
+            .hamburger-menu {
+                display: block;
+                background: none;
+                border: none;
+                color: #333;
+                font-size: 1.5em;
+                cursor: pointer;
+                z-index: 1002;
+            }
 
-    .nav-links {
-        position: fixed;
-        top: 0;
-        left: -300px; /* Sembunyikan di luar layar */
-        width: 250px;
-        height: 100%;
-        background-color: #333; /* Sesuaikan dengan warna tema Anda */
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Sesuaikan shadow */
-        z-index: 1001;
-        transition: left 0.3s ease-in-out;
-        padding-top: 4rem; /* Sesuaikan jarak dari atas */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Align items ke kiri */
-    }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -300px;
+                width: 250px;
+                height: 100%;
+                background-color: #FFFFFF; /* Sidebar putih */
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                z-index: 1001;
+                transition: left 0.3s ease-in-out;
+                padding-top: 4rem;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-    .nav-links.open {
-        left: 0; /* Tampilkan sidebar saat class 'open' ditambahkan */
-    }
+            .nav-links.open {
+                left: 0;
+            }
 
-    .close-menu {
-        display: block; /* Tampilkan di tampilan ponsel */
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 1.5em;
-        cursor: pointer;
-    }
+            .close-menu {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                background: none;
+                border: none;
+                color: #555;
+                font-size: 1.5em;
+                cursor: pointer;
+            }
 
-    .nav-links ul {
-        flex-direction: column;
-        padding: 0 1.5rem;
-        margin-top: 1rem; /* Sesuaikan jarak dari tombol close */
-        list-style: none;
-    }
+            .nav-links ul {
+                flex-direction: column;
+                padding: 0 1.5rem;
+                margin-top: 1rem;
+                list-style: none;
+            }
 
-    .nav-links ul li {
-        margin-left: 0;
-        margin-bottom: 1rem; /* Sesuaikan jarak antar link */
-        border-bottom: 1px solid #444; /* Sesuaikan warna garis pemisah */
-        padding-bottom: 1rem; /* Sesuaikan padding bawah link */
-        width: 100%; /* Agar link selebar sidebar */
-    }
+            .nav-links ul li {
+                margin-left: 0;
+                margin-bottom: 1rem;
+                border-bottom: 1px solid #E0E0E0;
+                padding-bottom: 1rem;
+                width: 100%;
+            }
 
-    .nav-links ul li:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-        margin-bottom: 0;
-    }
+            .nav-links ul li:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
 
-    .nav-links ul li a {
-        color: #eee; /* Sesuaikan warna link */
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.1em; /* Sesuaikan ukuran font link */
-    }
+            .nav-links ul li a {
+                color: #555;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
 
-    .nav-links ul li a:hover {
-        color: #ff8c00; /* Sesuaikan warna hover link */
-    }
-}
+            .nav-links ul li a:hover {
+                color: #E83F25;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-    <nav class="container">
-        <div class="logo">
-            <img src="trims.jpeg" alt="Logo Trims.Project" style="width: auto; height: 30px; margin-right: 15px;">
-            <span class="logo-text">Trims.Project</span>
-        </div>
-        <button class="hamburger-menu">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links">
-            <button class="close-menu">
-                <i class="fas fa-times"></i>
+        <nav class="container">
+            <div class="logo">
+                <img src="trims.jpeg" alt="Logo Trims.Project" style="width: auto; height: 30px; margin-right: 15px;">
+                <span class="logo-text">Trims.Project</span>
+            </div>
+            <button class="hamburger-menu">
+                <i class="fas fa-bars"></i>
             </button>
-            <ul>
+            <div class="nav-links">
+                <button class="close-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul>
+                    <li><a href="#layanan">Layanan</a></li>
+                    <li><a href="#testimoni">Testimoni</a></li>
+                    <li><a href="#konsultasi">Konsultasi</a></li>
+                </ul>
+            </div>
+            <ul class="desktop-nav">
                 <li><a href="#layanan">Layanan</a></li>
                 <li><a href="#testimoni">Testimoni</a></li>
                 <li><a href="#konsultasi">Konsultasi</a></li>
             </ul>
-        </div>
-        <ul class="desktop-nav">
-            <li><a href="#layanan">Layanan</a></li>
-            <li><a href="#testimoni">Testimoni</a></li>
-            <li><a href="#konsultasi">Konsultasi</a></li>
-        </ul>
-    </nav>
-</header>
+        </nav>
+    </header>
 
-    <section class="hero">
-        <img src="sampul.jpg" alt="Sampul Trims.Project" class="hero-image" style="width: 100%; height: auto; object-fit: cover;">
-        <div class="hero-overlay"></div>
-        <div class="hero-content container">
-            <h1 class="hero-title">Solusi Karya Ilmiah & Data Statistik</h1>
-            <p class="hero-subtitle">Dapatkan bantuan ahli untuk kebutuhan akademik Anda.</p>
-            <p class="hero-motto">100% Fast & Done</p>
-            <a href="#layanan" class="hero-cta">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7z"/>
-                </svg>
-                Lihat Layanan
-            </a>
+     <section class="hero">
+        <div class="hero-image-container">
+            <img src="sampul.jpeg" alt="Gambar Sampul" class="hero-image">
+        </div>
+        <div class="hero-overlay" style="justify-content: flex-end; padding-right: 5%;">
+            <div class="hero-content" style="max-width: 50%; text-align: left;">
+                <h1 class="hero-title animated-title" style="text-align: left; transform: translateY(-30px) translateX(10px); animation-name: slideInRight;">Solusi Karya Ilmiah dan Data Statistik</h1>
+                <p class="hero-motto" style="text-align: right; font-style: italic;">
+                    Dapatkan bantuan ahli untuk solusi layanan akademik anda.
+                </p>
+                <p class="hero-motto" style="text-align: right; font-style: italic;">
+                    100% Fast and Done
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="margin-left: 5px; width: 20px; height: 20px; vertical-align: middle;">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 13.17l7.59-7.59L19 7l-9 9 2 2z"/>
+                    </svg>
+                </p>
+                <div style="text-align: right;">
+                    <a href="#layanan" class="hero-cta" style="display: inline-flex; align-items: center; justify-content: center;">
+                        Layanan Kami
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="margin-left: 5px; width: 20px; height: 20px;">
+                            <path d="M12 4V2H10V4H4V6H6V18H4V20H10V22H12V20H18V18H16V6H18V4H12M12 10L14 10V16L12 16V13H10V16L8 16V10L10 10V13H12V10Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="layanan" class="services container">
-    <h2 class="services-title">Layanan Kami</h2>
-    <div class="services-grid">
-        <div class="service-card" style="border-left: 5px solid #ff8c00;">
-            <h3 class="card-title">📚 Karya Ilmiah</h3>
-            <p class="card-subtitle">Solusi lengkap untuk berbagai kebutuhan karya ilmiah.</p>
-            <ul class="card-list">
-                <li>Penelitian Kualitatif & Kuantitatif</li>
-                <li>Review Literatur</li>
-                <li>Analisis Kasus</li>
-                <li>Artikel Ilmiah</li>
-                <li>Laporan Penelitian</li>
-            </ul>
-            <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20tertarik%20untuk%20mendiskusikan%20lebih%20lanjut%20mengenai%20layanan%20bantuan%20untuk%20Karya%20Ilmiah%20saya.%20Mohon%20informasi%20lebih%20detailnya,%20terima%20kasih." target="_blank" class="card-cta">
-                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
-            </a>
-        </div>
+        <h2 class="services-title">Layanan Kami</h2>
+        <div class="services-grid">
+            <div class="service-card" style="border-left: 5px solid #EA7300;">
+                <h3 class="card-title">📚 Karya Ilmiah</h3>
+                <p class="card-subtitle">Solusi lengkap untuk berbagai kebutuhan karya ilmiah.</p>
+                <ul class="card-list">
+                    <li>Penelitian Kualitatif & Kuantitatif</li>
+                    <li>Review Literatur</li>
+                    <li>Analisis Kasus</li>
+                    <li>Artikel Ilmiah</li>
+                    <li>Laporan Penelitian</li>
+                </ul>
+                <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20tertarik%20untuk%20mendiskusikan%20lebih%20lanjut%20mengenai%20layanan%20bantuan%20untuk%20Karya%20Ilmiah%20saya.%20Mohon%20informasi%20lebih%20detailnya,%20terima%20kasih." target="_blank" class="card-cta">
+                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
+                </a>
+            </div>
 
-        <div class="service-card" style="border-left: 5px solid #00bcd4;">
-            <h3 class="card-title">🧮 Pengolahan Data Statistik</h3>
-            <p class="card-subtitle">Analisis data akurat dengan berbagai software.</p>
-            <ul class="card-list">
-                <li><strong>Software:</strong> SPSS, SmartPLS</li>
-                <li>Data Entry (Data Sekunder)</li>
-                <li>Interpretasi Hasil</li>
-                <li>Visualisasi Data</li>
-            </ul>
-            <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20membutuhkan%20bantuan%20profesional%20untuk%20pengolahan%20data%20statistik%20menggunakan%20SPSS/SmartPLS.%20Bisakah%20Anda%20memberikan%20penjelasan%20mengenai%20proses%20dan%20biayanya?%20Terima%20kasih." target="_blank" class="card-cta">
-                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
-            </a>
-        </div>
+            <div class="service-card" style="border-left: 5px solid #EA7300;">
+                <h3 class="card-title">🧮 Pengolahan Data Statistik</h3>
+                <p class="card-subtitle">Analisis data akurat dengan berbagai software.</p>
+                <ul class="card-list">
+                    <li><strong>Software:</strong> SPSS, SmartPLS</li>
+                    <li>Data Entry (Data Sekunder)</li>
+                    <li>Interpretasi Hasil</li>
+                    <li>Visualisasi Data</li>
+                </ul>
+                <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20membutuhkan%20bantuan%20profesional%20untuk%20pengolahan%20data%20statistik%20menggunakan%20SPSS/SmartPLS.%20Bisakah%20Anda%20memberikan%20penjelasan%20mengenai%20proses%20dan%20biayanya?%20Terima%20kasih." target="_blank" class="card-cta">
+                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
+                </a>
+            </div>
 
-        <div class="service-card" style="border-left: 5px solid #4CAF50;">
-            <h3 class="card-title">🎓 Skripsi</h3>
-            <p class="card-subtitle">Pendampingan terstruktur untuk skripsi Anda.</p>
-            <ul class="card-list">
-                <li>Daftar Isi & Otomatisasi</li>
-                <li>Bimbingan Per Bab</li>
-                <li>Analisis Data Skripsi</li>
-                <li>Revisi Komprehensif</li>
-                <li>Paket Full Skripsi</li>
-            </ul>
-            <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20sedang%20menyusun%20skripsi%20dan%20tertarik%20dengan%20layanan%20pendampingan%20Anda.%20Saya%20ingin%20tahu%20lebih%20banyak%20tentang%20tahapan%20bimbingan%20dan%20dukungan%20yang%20diberikan.%20Terima%20kasih." target="_blank" class="card-cta">
-                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
-            </a>
+            <div class="service-card" style="border-left: 5px solid #EA7300;">
+                <h3 class="card-title">🎓 Skripsi</h3>
+                <p class="card-subtitle">Pendampingan terstruktur untuk skripsi Anda.</p>
+                <ul class="card-list">
+                    <li>Daftar Isi & Otomatisasi</li>
+                    <li>Bimbingan Per Bab</li>
+                    <li>Analisis Data Skripsi</li>
+                    <li>Revisi Komprehensif</li>
+                    <li>Paket Full Skripsi</li>
+                </ul>
+                <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20sedang%20menyusun%20skripsi%20dan%20tertarik%20dengan%20layanan%20pendampingan%20Anda.%20Saya%20ingin%20tahu%20lebih%20banyak%20tentang%20tahapan%20bimbingan%20dan%20dukungan%20yang%20diberikan.%20Terima%20kasih." target="_blank" class="card-cta">
+                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <section class="why-choose-us container">
-        <h2 class="why-choose-us-title">Kenapa Memilih Kami?</h2>
+    <section class="why-choose-us container" style="background-color: #D3CA79;">
+        <h2 class="why-choose-us-title" style="color: #A62C2C;">Kenapa Memilih Kami?</h2>
         <div class="why-choose-grid">
             <div class="why-choose-item">
-                <h3>✅ Profesional</h3>
+                <h3 style="color: #EA7300;">✅ Profesional</h3>
                 <p>Tim ahli di berbagai bidang.</p>
             </div>
             <div class="why-choose-item">
-                <h3>⏱️ Cepat</h3>
+                <h3 style="color: #EA7300;">⏱️ Cepat</h3>
                 <p>Pengerjaan efisien tanpa mengurangi kualitas.</p>
             </div>
             <div class="why-choose-item">
-                <h3>🔒 Terpercaya</h3>
+                <h3 style="color: #EA7300;">🔒 Terpercaya</h3>
                 <p>Data dan privasi Anda aman.</p>
             </div>
             <div class="why-choose-item">
-                <h3>💰 Terjangkau</h3>
+                <h3 style="color: #EA7300;">💰 Terjangkau</h3>
                 <p>Harga kompetitif untuk layanan terbaik.</p>
             </div>
             <div class="why-choose-item">
-                <h3>💯 Revisi</h3>
+                <h3 style="color: #EA7300;">💯 Revisi</h3>
                 <p>Fleksibilitas untuk kepuasan Anda.</p>
             </div>
             <div class="why-choose-item">
-                <h3>📞 Responsif</h3>
+                <h3 style="color: #EA7300;">📞 Responsif</h3>
                 <p>Dukungan pelanggan yang siap membantu.</p>
             </div>
         </div>
     </section>
 
     <section id="testimoni" class="testimonials container">
-        <h2 class="testimonials-title">Testimoni Klien</h2>
-        <div class="phone-frame">
-            <div class="screen">
+        <h2 class="testimonials-title" style="color: #A62C2C;">Testimoni Klien</h2>
+        <div class="phone-frame" style="border-color: #EA7300; background-color: #F0F0F0;">
+            <div class="screen" style="background-color: #FFFFFF;">
                 <div class="testimonial-slider">
                     <div class="testimonial-slide"><img src="testi.jpeg" alt="Testimoni 1"></div>
                     <div class="testimonial-slide"><img src="testi2.jpeg" alt="Testimoni 2"></div>
@@ -737,16 +854,16 @@
                 </div>
             </div>
             <div class="slider-controls">
-                <button class="slider-control-btn prevBtn">Prev</button>
-                <button class="slider-control-btn nextBtn">Next</button>
+                <button class="slider-control-btn prevBtn" style="background-color: #E83F25; color: #FFFFFF;">Prev</button>
+                <button class="slider-control-btn nextBtn" style="background-color: #E83F25; color: #FFFFFF;">Next</button>
             </div>
         </div>
     </section>
 
-    <section id="konsultasi" class="consultation-cta container">
-        <h2 class="consultation-cta-title">Butuh Konsultasi Lebih Lanjut?</h2>
-        <p style="color: #eee; margin-bottom: 20px;">Dapatkan konsultasi gratis dari tim ahli kami!</p>
-        <a href="https://wa.me/6285775085507?text=Halo,%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20Trims.Project." target="_blank" class="consultation-cta-button">
+    <section id="konsultasi" class="consultation-cta container" style="background-color: #D3CA79;">
+        <h2 class="consultation-cta-title" style="color: #A62C2C;">Butuh Konsultasi Lebih Lanjut?</h2>
+        <p style="color: #555; margin-bottom: 20px;">Dapatkan konsultasi gratis dari tim ahli kami!</p>
+        <a href="https://wa.me/6285775085507?text=Halo,%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20Trims.Project." target="_blank" class="consultation-cta-button" style="background-color: #E83F25; color: #FFFFFF;">
             <i class="fas fa-comments" style="margin-right: 10px;"></i> Layanan Konsultasi
         </a>
     </section>
@@ -793,12 +910,12 @@
         const whyChooseItems = document.querySelectorAll('.why-choose-item');
         whyChooseItems.forEach(item => {
             item.addEventListener('mouseenter', () => {
-                item.style.transform = 'scale(1.08)';
-                item.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
+                item.style.transform = 'scale(1.05)';
+                item.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)';
             });
             item.addEventListener('mouseleave', () => {
                 item.style.transform = 'scale(1)';
-                item.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.3)';
+                item.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
             });
         });
 
