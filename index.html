@@ -414,11 +414,11 @@
         }
 
         .slider-control-btn:hover {
-            background-color: #orange;
+            background-color: orange;
         }
 
-        /* Contact Section */
-        .contact-cta {
+        /* Contact Section (Diubah menjadi Layanan Konsultasi) */
+        .consultation-cta {
             text-align: center;
             padding: 30px 20px;
             background-color: #222;
@@ -427,17 +427,17 @@
             margin-bottom: 30px;
         }
 
-        .contact-cta-title {
+        .consultation-cta-title {
             font-size: 1.8em;
             margin-bottom: 15px;
             color: #ff8c00;
             font-weight: bold;
         }
 
-        .contact-cta-button {
+        .consultation-cta-button {
             display: inline-flex;
             align-items: center;
-            background-color: #4CAF50;
+            background-color: #007bff; /* Warna biru untuk konsultasi */
             color: #fff;
             padding: 12px 25px;
             border-radius: 8px;
@@ -447,12 +447,12 @@
             box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
         }
 
-        .contact-cta-button:hover {
-            background-color: #45a049;
+        .consultation-cta-button:hover {
+            background-color: #0056b3;
             transform: translateY(-2px);
         }
 
-        .contact-cta-button i {
+        .consultation-cta-button i {
             margin-right: 10px;
             font-size: 1.2em;
         }
@@ -468,94 +468,167 @@
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                position: fixed;
-                top: 15px;
-                left: 15px;
-                background: none;
-                border: none;
-                color: #fff;
-                font-size: 1.5em;
-                cursor: pointer;
-                z-index: 102;
-                transition: transform 0.3s ease;
-            }
+        /* Desktop Styles */
+@media (min-width: 769px) {
+    nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-            .menu-toggle.open {
-                transform: rotate(90deg);}
+    .hamburger-menu, .close-menu {
+        display: none; /* Sembunyikan di tampilan desktop */
+    }
 
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-                position: fixed;
-                top: 0;
-                left: -250px;
-                width: 250px;
-                height: 100%;
-                background-color: #333;
-                padding-top: 60px;
-                transition: left 0.3s ease-in-out;
-                z-index: 101;
-                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-            }
+    .nav-links {
+        display: block !important; /* Override potensi inline style */
+    }
 
-            nav.open {
-                left: 0;
-            }
+    .nav-links ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-            .logo {
-                margin-bottom: 20px;
-                padding: 0 20px;
-            }
+    .nav-links ul li {
+        margin: 0 20px;
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+    }
 
-            nav ul {
-                flex-direction: column;
-                width: 100%;
-            }
+    .nav-links ul li a {
+        color: #eee;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95em;
+    }
 
-            nav ul li {
-                margin: 0;
-                padding: 15px 20px;
-                border-bottom: 1px solid #444;
-            }
+    .nav-links ul li a:hover {
+        color: #ff8c00;
+    }
 
-            nav ul li a {
-                display: block;
-                width: 100%;
-            }
+    .desktop-nav {
+        display: none; /* Sembunyikan duplikat nav desktop */
+    }
+}
 
-            .hero {
-                margin-top: 60px;
-            }
-        }
+/* Mobile Styles */
+@media (max-width: 768px) {
+    nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px; /* Sesuaikan padding container di mobile */
+    }
 
-        /* Hide menu toggle on desktop */
-        @media (min-width: 769px) {
-            .menu-toggle {
-                display: none;
-            }
-        }
+    .desktop-nav {
+        display: none; /* Sembunyikan navigasi desktop di mobile */
+    }
+
+    .hamburger-menu {
+        display: block; /* Tampilkan di tampilan ponsel */
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5em;
+        cursor: pointer;
+        z-index: 1002; /* Lebih tinggi dari nav-links */
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -300px; /* Sembunyikan di luar layar */
+        width: 250px;
+        height: 100%;
+        background-color: #333; /* Sesuaikan dengan warna tema Anda */
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Sesuaikan shadow */
+        z-index: 1001;
+        transition: left 0.3s ease-in-out;
+        padding-top: 4rem; /* Sesuaikan jarak dari atas */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Align items ke kiri */
+    }
+
+    .nav-links.open {
+        left: 0; /* Tampilkan sidebar saat class 'open' ditambahkan */
+    }
+
+    .close-menu {
+        display: block; /* Tampilkan di tampilan ponsel */
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        padding: 0 1.5rem;
+        margin-top: 1rem; /* Sesuaikan jarak dari tombol close */
+        list-style: none;
+    }
+
+    .nav-links ul li {
+        margin-left: 0;
+        margin-bottom: 1rem; /* Sesuaikan jarak antar link */
+        border-bottom: 1px solid #444; /* Sesuaikan warna garis pemisah */
+        padding-bottom: 1rem; /* Sesuaikan padding bawah link */
+        width: 100%; /* Agar link selebar sidebar */
+    }
+
+    .nav-links ul li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .nav-links ul li a {
+        color: #eee; /* Sesuaikan warna link */
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1em; /* Sesuaikan ukuran font link */
+    }
+
+    .nav-links ul li a:hover {
+        color: #ff8c00; /* Sesuaikan warna hover link */
+    }
+}
     </style>
 </head>
 <body>
     <header>
-        <nav class="container">
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
+    <nav class="container">
+        <div class="logo">
+            <img src="trims.jpeg" alt="Logo Trims.Project" style="width: auto; height: 30px; margin-right: 15px;">
+            <span class="logo-text">Trims.Project</span>
+        </div>
+        <button class="hamburger-menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <button class="close-menu">
+                <i class="fas fa-times"></i>
             </button>
-            <div class="logo">
-                <img src="trims.jpeg" alt="Logo Trims.Project" style="width: auto; height: 30px; margin-right: 15px;">
-                <span class="logo-text">Trims.Project</span>
-            </div>
             <ul>
                 <li><a href="#layanan">Layanan</a></li>
                 <li><a href="#testimoni">Testimoni</a></li>
-                <li><a href="#kontak-wa">Pesan</a></li>
+                <li><a href="#konsultasi">Konsultasi</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+        <ul class="desktop-nav">
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#testimoni">Testimoni</a></li>
+            <li><a href="#konsultasi">Konsultasi</a></li>
+        </ul>
+    </nav>
+</header>
 
     <section class="hero">
         <img src="sampul.jpg" alt="Sampul Trims.Project" class="hero-image" style="width: 100%; height: auto; object-fit: cover;">
@@ -574,62 +647,53 @@
     </section>
 
     <section id="layanan" class="services container">
-        <h2 class="services-title">Layanan Kami</h2>
-        <div class="services-grid">
-            <div class="service-card" style="border-left: 5px solid #ff8c00;">
-                <h3 class="card-title">📚 Karya Ilmiah</h3>
-                <p class="card-subtitle">Solusi lengkap untuk berbagai kebutuhan karya ilmiah.</p>
-                <ul class="card-list">
-                    <li>Penelitian Kualitatif & Kuantitatif</li>
-                    <li>Review Literatur</li>
-                    <li>Analisis Kasus</li>
-                    <li>Artikel Ilmiah</li>
-                    <li>Laporan Penelitian</li>
-                </ul>
-                <a href="https://wa.me/6285775085507" target="_blank" class="card-cta">
-                    Pesan Sekarang
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="service-card" style="border-left: 5px solid #00bcd4;">
-                <h3 class="card-title">🧮 Pengolahan Data Statistik</h3>
-                <p class="card-subtitle">Analisis data akurat dengan berbagai software.</p>
-                <ul class="card-list">
-                    <li><strong>Software:</strong> SPSS, SmartPLS</li>
-                    <li>Data Entry (Data Sekunder)</li>
-                    <li>Interpretasi Hasil</li>
-                    <li>Visualisasi Data</li>
-                </ul>
-                <a href="https://wa.me/6285775085507" target="_blank" class="card-cta">
-                    Pesan Sekarang
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="service-card" style="border-left: 5px solid #4CAF50;">
-                <h3 class="card-title">🎓 Skripsi</h3>
-                <p class="card-subtitle">Pendampingan terstruktur untuk skripsi Anda.</p>
-                <ul class="card-list">
-                    <li>Daftar Isi & Otomatisasi</li>
-                    <li>Bimbingan Per Bab</li>
-                    <li>Analisis Data Skripsi</li>
-                    <li>Revisi Komprehensif</li>
-                    <li>Paket Full Skripsi</li>
-                </ul>
-                <a href="https://wa.me/6285775085507" target="_blank" class="card-cta">
-                    Pesan Sekarang
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                    </svg>
-                </a>
-            </div>
+    <h2 class="services-title">Layanan Kami</h2>
+    <div class="services-grid">
+        <div class="service-card" style="border-left: 5px solid #ff8c00;">
+            <h3 class="card-title">📚 Karya Ilmiah</h3>
+            <p class="card-subtitle">Solusi lengkap untuk berbagai kebutuhan karya ilmiah.</p>
+            <ul class="card-list">
+                <li>Penelitian Kualitatif & Kuantitatif</li>
+                <li>Review Literatur</li>
+                <li>Analisis Kasus</li>
+                <li>Artikel Ilmiah</li>
+                <li>Laporan Penelitian</li>
+            </ul>
+            <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20tertarik%20untuk%20mendiskusikan%20lebih%20lanjut%20mengenai%20layanan%20bantuan%20untuk%20Karya%20Ilmiah%20saya.%20Mohon%20informasi%20lebih%20detailnya,%20terima%20kasih." target="_blank" class="card-cta">
+                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
+            </a>
         </div>
-    </section>
+
+        <div class="service-card" style="border-left: 5px solid #00bcd4;">
+            <h3 class="card-title">🧮 Pengolahan Data Statistik</h3>
+            <p class="card-subtitle">Analisis data akurat dengan berbagai software.</p>
+            <ul class="card-list">
+                <li><strong>Software:</strong> SPSS, SmartPLS</li>
+                <li>Data Entry (Data Sekunder)</li>
+                <li>Interpretasi Hasil</li>
+                <li>Visualisasi Data</li>
+            </ul>
+            <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20membutuhkan%20bantuan%20profesional%20untuk%20pengolahan%20data%20statistik%20menggunakan%20SPSS/SmartPLS.%20Bisakah%20Anda%20memberikan%20penjelasan%20mengenai%20proses%20dan%20biayanya?%20Terima%20kasih." target="_blank" class="card-cta">
+                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
+            </a>
+        </div>
+
+        <div class="service-card" style="border-left: 5px solid #4CAF50;">
+            <h3 class="card-title">🎓 Skripsi</h3>
+            <p class="card-subtitle">Pendampingan terstruktur untuk skripsi Anda.</p>
+            <ul class="card-list">
+                <li>Daftar Isi & Otomatisasi</li>
+                <li>Bimbingan Per Bab</li>
+                <li>Analisis Data Skripsi</li>
+                <li>Revisi Komprehensif</li>
+                <li>Paket Full Skripsi</li>
+            </ul>
+            <a href="https://wa.me/6285775085507?text=Halo,%20Trims.Project!%20Saya%20sedang%20menyusun%20skripsi%20dan%20tertarik%20dengan%20layanan%20pendampingan%20Anda.%20Saya%20ingin%20tahu%20lebih%20banyak%20tentang%20tahapan%20bimbingan%20dan%20dukungan%20yang%20diberikan.%20Terima%20kasih." target="_blank" class="card-cta">
+                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Pesan Sekarang
+            </a>
+        </div>
+    </div>
+</section>
 
     <section class="why-choose-us container">
         <h2 class="why-choose-us-title">Kenapa Memilih Kami?</h2>
@@ -679,12 +743,11 @@
         </div>
     </section>
 
-    <section id="kontak-wa" class="contact-cta container">
-        <h2 class="contact-cta-title">Siap Mendapatkan Bantuan Terbaik?</h2>
-        <p style="color: #eee; margin-bottom: 20px;">Hubungi kami sekarang via WhatsApp!</p>
-        <a href="https://wa.me/6285775085507" target="_blank" class="contact-cta-button">
-            <i class="fas fa-shopping-cart" style="margin-right: 10px;"></i>
-            Pesan Sekarang
+    <section id="konsultasi" class="consultation-cta container">
+        <h2 class="consultation-cta-title">Butuh Konsultasi Lebih Lanjut?</h2>
+        <p style="color: #eee; margin-bottom: 20px;">Dapatkan konsultasi gratis dari tim ahli kami!</p>
+        <a href="https://wa.me/6285775085507?text=Halo,%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20Trims.Project." target="_blank" class="consultation-cta-button">
+            <i class="fas fa-comments" style="margin-right: 10px;"></i> Layanan Konsultasi
         </a>
     </section>
 
@@ -696,6 +759,50 @@
     </footer>
 
     <script>
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const closeMenu = document.querySelector('.close-menu');
+
+        hamburgerMenu.addEventListener('click', () => {
+            navLinks.classList.add('open');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+
+        // Smooth scrolling
+        const navATags = document.querySelectorAll('.nav-links ul li a, .desktop-nav li a');
+        navATags.forEach(link => {
+            link.addEventListener('click', function (event) {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('open'); // Tutup menu setelah klik di mobile
+                }
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    event.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Interactive Why Choose Us
+        const whyChooseItems = document.querySelectorAll('.why-choose-item');
+        whyChooseItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'scale(1.08)';
+                item.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+                item.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.3)';
+            });
+        });
+
+        // Testimonial slider
         const testimonialSlider = document.querySelector('.testimonial-slider');
         const slides = document.querySelectorAll('.testimonial-slide');
         const prevBtn = document.querySelector('.prevBtn');
@@ -718,45 +825,6 @@
 
         nextBtn.addEventListener('click', nextSlide);
         prevBtn.addEventListener('click', prevSlide);
-
-        // Interactive Why Choose Us
-        const whyChooseItems = document.querySelectorAll('.why-choose-item');
-        whyChooseItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                item.style.transform = 'scale(1.08)';
-                item.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-            });
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'scale(1)';
-                item.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.3)';
-            });
-        });
-
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-        const navLinks = document.querySelectorAll('nav a');
-
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-            menuToggle.classList.toggle('open');
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (event) {
-                if (window.innerWidth <= 768) {
-                    nav.classList.remove('open');
-                    menuToggle.classList.remove('open');
-                }
-
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    event.preventDefault(); // Prevent default jump behavior
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
     </script>
 </body>
 </html>
