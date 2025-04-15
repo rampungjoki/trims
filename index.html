@@ -471,17 +471,17 @@
     </div>
   </section>
 
-  <section id="testimoni" class="section">
-    <h2 class="section-title">Testimoni</h2>
-    <div class="slideshow-container">
-      <div class="mySlides"><img src="testi.jpeg" alt="Testimoni 1"></div>
-      <div class="mySlides"><img src="testi2.jpeg" alt="Testimoni 2"></div>
-      <div class="mySlides"><img src="testi3.jpeg" alt="Testimoni 3"></div>
-      <div class="mySlides"><img src="testi4.jpeg" alt="Testimoni 4"></div>
-      <a class="prev" onclick="plusSlides(-1)">❮</a>
-      <a class="next" onclick="plusSlides(1)">❯</a>
-    </div>
-  </section>
+  <section id="testimoni" class="section" style="background-color: #f4f4f4; padding: 4rem 2rem;">
+  <h2 class="section-title">Testimoni</h2>
+  <div class="slideshow-container" style="background-color: #ff7a00; padding: 2rem; border-radius: 12px;">
+    <div class="mySlides"><img src="testi.jpeg" alt="Testimoni 1"></div>
+    <div class="mySlides"><img src="testi2.jpeg" alt="Testimoni 2"></div>
+    <div class="mySlides"><img src="testi3.jpeg" alt="Testimoni 3"></div>
+    <div class="mySlides"><img src="testi4.jpeg" alt="Testimoni 4"></div>
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+  </div>
+</section>
  <section id="konsultasi" class="section konsultasi-section">
   <h2 class="section-title">Konsultasi Dengan Kami</h2>
   <div class="konsultasi-card">
@@ -497,23 +497,29 @@
 </section>
 
   <footer>
-    <p>&copy; 2025 Trims.Project. Semua hak dilindungi.</p>
-  </footer>
+  <p>Bagian dari <strong>rampungin.id</strong> &copy; 2025 – Trims.Project. Semua hak cipta dilindungi.</p>
+</footer>
+
 
   <script>
-    let slideIndex = 0;
-    showSlides();
+   let slideIndex = 0;
+  showSlides();
 
-    function showSlides() {
-      let slides = document.getElementsByClassName("mySlides");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      slides[slideIndex-1].style.display = "block";
-      setTimeout(showSlides, 2000); // Ubah gambar setiap 2 detik
+  // Fungsi untuk mengatur slides
+  function plusSlides(n) {
+    slideIndex += n;
+    showSlides();
+  }
+
+  function showSlides() {
+    let slides = document.getElementsByClassName("mySlides");
+    if (slideIndex >= slides.length) slideIndex = 0;
+    if (slideIndex < 0) slideIndex = slides.length - 1;
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
     }
+    slides[slideIndex].style.display = "block";
+  }
 
     // Toggle nav menu on mobile
     const mobileToggle = document.querySelector('.mobile-toggle');
