@@ -3,555 +3,1248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trims.Project – Jasa Karya Ilmiah & Pengolahan Data</title>
+  <title>Trims.Project – Jasa Karya Ilmiah & Pengolahan Data Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <style>
     :root {
       --primary: #ff7a00;
+      --primary-dark: #e65100;
       --accent: #ffab40;
-      --dark: #333;
+      --accent-light: #ffdd71;
+      --dark: #222;
+      --darker: #111;
+      --light: #f8f9fa;
+      --lighter: #fff;
       --bg: #fff9f0;
-      --text: #222;
+      --text: #333;
+      --text-light: #666;
       --highlight: #ff9900;
+      --success: #4caf50;
+      --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+      --shadow-md: 0 5px 20px rgba(0,0,0,0.12);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     * {
-      margin: 0; padding: 0;
+      margin: 0; 
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: var(--bg);
       color: var(--text);
       scroll-behavior: smooth;
+      line-height: 1.6;
     }
 
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: 1;
+    }
+
+    .hero-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-element {
+      position: absolute;
+      opacity: 0.2;
+    }
+
+    .element-1 {
+      top: 20%;
+      left: 5%;
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    .element-2 {
+      top: 60%;
+      left: 10%;
+      animation: floating 7s ease-in-out infinite 1s;
+    }
+
+    .element-3 {
+      top: 30%;
+      right: 10%;
+      animation: floating 8s ease-in-out infinite 0.5s;
+    }
+
+    .element-4 {
+      bottom: 20%;
+      right: 5%;
+      animation: floating 6.5s ease-in-out infinite 1.5s;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Navigation */
     nav {
-      background: white;
+      background: rgba(255,255,255,0.95);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      position: sticky;
+      box-shadow: var(--shadow-sm);
+      position: fixed;
+      width: 100%;
       top: 0;
       z-index: 1000;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
     }
 
-    nav img {
-      height: 40px;
+    nav.scrolled {
+      padding: 0.5rem 2rem;
+      box-shadow: var(--shadow-md);
     }
 
     .logo-wrap {
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
     }
 
-    .logo-text {
-      font-weight: bold;
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .brand-title {
       font-size: 1.5rem;
+      font-weight: bold;
     }
 
-    .logo-text .trims {
+    .trims {
       color: var(--primary);
     }
 
-    .logo-text .project {
-      color: var(--accent);
+    .project {
+      color: var(--dark);
     }
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
+      align-items: center;
     }
 
-    nav a {
+    .nav-links a {
       text-decoration: none;
-      color: var(--primary);
-      font-weight: bold;
+      color: var(--dark);
+      font-weight: 600;
       position: relative;
+      transition: var(--transition);
     }
 
-    nav a::after {
+    .nav-links a::after {
       content: '';
       width: 0;
       height: 2px;
       position: absolute;
       bottom: -5px;
       left: 0;
-      background: var(--highlight);
-      transition: 0.3s;
+      background: var(--primary);
+      transition: var(--transition);
     }
 
-    nav a:hover::after {
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
       width: 100%;
     }
 
-    .mobile-toggle {
-      display: none;
-    }
-
-    @media(max-width: 768px) {
-      .nav-links {
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        background: var(--white);
-        height: 100vh;
-        width: 250px;
-        padding-top: 5rem;
-        transition: 0.3s;
-      }
-
-      .nav-links.open {
-        right: 0;
-      }
-
-      .mobile-toggle {
-        display: block;
-        font-size: 2rem;
-        cursor: pointer;
-      }
-    }
-
-    header {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+    .cta-nav {
+      background: var(--primary);
       color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    .cta-nav:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
     }
 
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--lighter);
+      color: var(--primary);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary:hover {
+      background: var(--lighter);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--lighter);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+      border-color: transparent;
+    }
+
+    /* Section Styles */
     .section {
-      padding: 4rem 2rem;
-      max-width: 1100px;
-      margin: auto;
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .section-title {
       text-align: center;
-      color: var(--primary);
-      font-size: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
     }
 
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Cards Section */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
 
     .card {
-      background: white;
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      border-top: 5px solid var(--primary);
-      transition: 0.3s;
+      background: var(--lighter);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
     }
 
-    .card h3 {
+    .card-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .card-header h3 {
+      font-size: 1.5rem;
       margin-bottom: 0.5rem;
-      color: var(--dark);
     }
 
-    .card p {
-      font-size: 0.95rem;
+    .card-icon {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    .btn {
-      background: var(--highlight);
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 25px;
-      text-decoration: none;
-      display: inline-block;
-      transition: 0.3s;
-      font-weight: bold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .btn .cart-icon {
-      margin-left: 0.5rem;
-    }
-
-    .btn:hover {
-      background: var(--accent);
-    }
-
-    .slideshow-container {
-      position: relative;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .mySlides {
-      display: none;
-    }
-
-    .mySlides img {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    .prev, .next {
+    .card-badge {
       position: absolute;
-      top: 50%;
-      background: rgba(0,0,0,0.5);
-      color: white;
-      font-size: 18px;
-      padding: 12px;
-      cursor: pointer;
-      border: none;
-      transform: translateY(-50%);
+      top: -10px;
+      right: 20px;
+      background: var(--accent);
+      color: var(--darker);
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(255, 171, 64, 0.3);
     }
 
+    .card-body {
+      padding: 1.5rem;
+    }
 
-    .prev { left: 0; }
-    .next { right: 0; }
+    .card-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #222;
-      color: #eee;
+    .card-features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed #eee;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-features li i {
+      color: var(--success);
       font-size: 0.9rem;
-      margin-top: 4rem;
     }
-	.konsultasi-section {
-  text-align: center;
-  padding: 50px 20px;
-  background-color: #fff9f0;
-}
 
-.konsultasi-card {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 40px 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  position: relative;
-}
+    .card-btn {
+      width: 100%;
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
 
-.konsultasi-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
+    .card-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
 
-.konsultasi-card .icon-wrap {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  animation: bounce 2s infinite;
-}
+    /* Features Section */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
+    .feature-card {
+      background: var(--lighter);
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
 
-.konsultasi-card h3 {
-  font-size: 1.6rem;
-  color: #ff7a00;
-  margin-bottom: 15px;
-}
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
 
-.konsultasi-card p {
-  color: #444;
-  font-size: 1rem;
-  margin-bottom: 25px;
-  line-height: 1.6;
-}
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
 
-.btn-konsultasi {
-  display: inline-block;
-  background: #ff7a00;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(255, 122, 0, 0.4);
-}
+    .feature-card h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
 
-.btn-konsultasi:hover {
-  background-color: #e56700;
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(255, 122, 0, 0.5);
-}
-.btn-scroll {
-  display: inline-block;
-  margin-top: 20px;
-  background: #ff7a00;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 15px rgba(255, 122, 0, 0.3);
-}
+     /* Testimonials Section Styles */
+  .testimonials-section {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
 
-.btn-scroll:hover {
-  background: #222;
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-.brand-title, header h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-}
+  .testimonial-slider {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
 
-.trims {
-  color: #e65100; /* Lebih pekat daripada #ff7a00 */
-  font-weight: bold;
-}
+  .testimonial-wrapper {
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+  }
 
-.project {
-  color: #000;
-  font-weight: bold;
-}
-.hamburger {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-.close-btn {
-  display: none;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 2rem;
-  color: var(--primary);
-}
-.card ul {
-  list-style: none;
-  padding-left: 1rem;
-  margin: 0.5rem 0 1rem;
-}
+  .testimonial-slide {
+    position: absolute;
+    width: 100%;
+    transition: all 0.6s ease-in-out;
+    opacity: 0;
+    transform: translateX(100%);
+  }
 
-.card ul li {
-  margin-bottom: 0.4rem;
-}
-@media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -250px;
-    height: 100%;
-    width: 250px;
+  .testimonial-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+  }
+
+  .testimonial-content {
     background: white;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 3rem 1.5rem;
-    gap: 2rem;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-    transition: right 0.3s ease-in-out;
-    z-index: 999;
+    align-items: center;
+    text-align: center;
+    position: relative;
   }
 
-  .nav-links.show {
-    right: 0;
+  .testimonial-image {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.5rem;
   }
 
-  .hamburger {
-    display: block;
+  .testimonial-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   }
-.close-btn {
-    display: block;
-  }
-}
 
+  .testimonial-quote-icon {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background: var(--primary);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+  }
+
+  .testimonial-text-content {
+    max-width: 600px;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    position: relative;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .testimonial-author-info {
+    margin-top: 1rem;
+  }
+
+  .testimonial-author {
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 1.1rem;
+  }
+
+  .testimonial-role {
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+
+  .slider-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .slider-arrow {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+  }
+
+  .slider-arrow:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+  }
+
+  .slider-dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  .slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 122, 0, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .slider-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+  }
+
+  @media (min-width: 768px) {
+    .testimonial-content {
+      flex-direction: row;
+      text-align: left;
+      padding: 3rem;
+    }
+
+    .testimonial-image {
+      margin-right: 2rem;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .testimonial-text-content {
+      padding-right: 1rem;
+    }
+  }
+
+    /* Consultation Section */
+    .consultation-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .consultation-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .consultation-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .consultation-section p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .btn-consultation {
+      background: white;
+      color: var(--primary);
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .btn-consultation:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--darker);
+      color: white;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-column h3 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .footer-links a i {
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-bottom p {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 999;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .hamburger {
+        display: block;
+        z-index: 1000;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        padding: 5rem 1.5rem 3rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+
+    /* Floating chat button */
+    .floating-chat {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 20px rgba(255, 122, 0, 0.3);
+      z-index: 999;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .floating-chat:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(255, 122, 0, 0.4);
+    }
   </style>
 </head>
 <body>
-
- <nav>
-  <div style="display: flex; align-items: center;">
-    <img src="trims.jpeg" alt="Trims.Project Logo" />
-    <span class="brand-title"><span class="trims">Trims</span><span class="project">Project</span></span>
-  </div>
-
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-  <div class="nav-links">
-  <span class="close-btn" onclick="toggleMenu()">✕</span>
-  <a href="#layanan" class="scroll-link">Layanan</a>
-  <a href="#testimoni" class="scroll-link">Testimoni</a>
-  <a href="#konsultasi" class="scroll-link">Konsultasi</a>
-</div>
-</nav>
-
-  <header>
-  <h1><span class="trims">Trims</span><span class="project">Project</span></h1>
-  <p>Layanan Jasa Penulisan Karya Ilmiah & Pengolahan Data Profesional dan Terpercaya</p>
-  <a href="#layanan" class="btn scroll-link" style="margin-top: 1.5rem; display: inline-block;">Lihat Layanan Kami</a>
-</header>
-
-  <section id="layanan" class="section">
-  <h2 class="section-title">Layanan Kami</h2>
-  <div class="cards">
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="logo-wrap">
+      <img src="trims.jpeg" alt="Trims.Project Logo" class="logo-img">
+      <div class="brand-title"><span class="trims">Trims</span><span class="project">Project</span></div>
+    </a>
     
-    <div class="card">
-      <h3>📚 Karya Ilmiah</h3>
-      <p><em>Solusi lengkap untuk berbagai kebutuhan karya ilmiah.</em></p>
-      <ul>
-        <li>• Penelitian Kualitatif & Kuantitatif</li>
-        <li>• Review Literatur</li>
-        <li>• Analisis Kasus</li>
-        <li>• Artikel Ilmiah</li>
-        <li>• Laporan Penelitian</li>
-      </ul>
-      <a class="btn" href="https://wa.me/6285775085507?text=Halo%20saya%20ingin%20memesan%20jasa%20karya%20ilmiah%20di%20Trims.Project.%20Mohon%20bantuannya.">
-        🛒 Pesan Sekarang
+    <div class="nav-links" id="navLinks">
+      <a href="#layanan" class="scroll-link">Layanan</a>
+      <a href="#keunggulan" class="scroll-link">Keunggulan</a>
+      <a href="#testimoni" class="scroll-link">Testimoni</a>
+      <a href="#konsultasi" class="scroll-link">Konsultasi</a>
+      <a href="https://wa.me/6285775085507" class="cta-nav">
+        <i class="fab fa-whatsapp"></i> Hubungi Kami
       </a>
     </div>
-
-    <div class="card">
-      <h3>🧮 Pengolahan Data Statistik</h3>
-      <p><em>Analisis data akurat dengan berbagai software.</em></p>
-      <ul>
-        <li>• Software: SPSS, SmartPLS</li>
-        <li>• Data Entry (Data Sekunder)</li>
-        <li>• Interpretasi Hasil</li>
-        <li>• Visualisasi Data</li>
-      </ul>
-      <a class="btn" href="https://wa.me/6285775085507?text=Halo%20saya%20ingin%20memesan%20jasa%20pengolahan%20data%20statistik%20di%20Trims.Project.%20Mohon%20bantuannya.">
-        🛒 Pesan Sekarang
-      </a>
+    
+    <div class="hamburger" id="hamburgerMenu">
+      <i class="fas fa-bars"></i>
     </div>
+  </nav>
 
-    <div class="card">
-      <h3>🎓 Skripsi</h3>
-      <p><em>Pendampingan terstruktur untuk skripsi Anda.</em></p>
-      <ul>
-        <li>• Daftar Isi & Otomatisasi</li>
-        <li>• Bimbingan Per Bab</li>
-        <li>• Analisis Data Skripsi</li>
-        <li>• Revisi Komprehensif</li>
-        <li>• Paket Full Skripsi</li>
-      </ul>
-      <a class="btn" href="https://wa.me/6285775085507?text=Halo%20saya%20ingin%20memesan%20jasa%20bimbingan%20skripsi%20di%20Trims.Project.%20Tolong%20informasikan%20lebih%20lanjut.">
-        🛒 Pesan Sekarang
-      </a>
+  <!-- Hero Section -->
+  <header>
+    <div class="hero-pattern"></div>
+    <div class="hero-elements">
+      <img src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png" alt="Academic Icon" class="hero-element element-1" style="width: 80px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/2936/2936886.png" alt="Graduation Icon" class="hero-element element-2" style="width: 100px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3132/3132695.png" alt="Research Icon" class="hero-element element-3" style="width: 70px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/2936/2936777.png" alt="Statistics Icon" class="hero-element element-4" style="width: 90px;">
     </div>
+    
+    <div class="hero-content animate__animated animate__fadeIn">
+      <h1 class="animate__animated animate__fadeInDown">Solusi Karya Ilmiah & Pengolahan Data</h1>
+      <p class="animate__animated animate__fadeInDown animate__delay-1s">Layanan profesional untuk penelitian, skripsi, dan analisis data statistik dengan hasil terjamin</p>
+      
+      <div class="hero-buttons">
+        <a href="#layanan" class="btn btn-primary animate__animated animate__fadeInUp animate__delay-2s">
+          <i class="fas fa-search"></i> Jelajahi Layanan
+        </a>
+        <a href="https://wa.me/6285775085507" class="btn btn-secondary animate__animated animate__fadeInUp animate__delay-3s">
+          <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+        </a>
+      </div>
+    </div>
+  </header>
 
-  </div>
-</section>
-
-
-  <section class="section">
-    <h2 class="section-title">Kenapa Memilih Kami?</h2>
-    <div class="cards">
-      <div class="card"><p>✅ Tim Profesional & Berpengalaman</p></div>
-      <div class="card"><p>✅ Revisi Tanpa Batas</p></div>
-      <div class="card"><p>✅ Hasil Cepat & Tepat Waktu</p></div>
-      <div class="card"><p>✅ Harga Bersaing & Terjangkau</p></div>
-      <div class="card"><p>✅ Konsultasi Gratis</p></div>
-      <div class="card"><p>✅ Support Penuh Hingga Selesai</p></div>
+  <!-- Services Section -->
+  <section id="layanan" class="section">
+    <div class="container">
+      <div class="section-title animate__animated animate__fadeIn">
+        <h2>Layanan Kami</h2>
+      </div>
+      <p class="section-subtitle animate__animated animate__fadeIn animate__delay-1s">Berbagai solusi lengkap untuk kebutuhan akademik dan penelitian Anda</p>
+      
+      <div class="cards">
+        <!-- Karya Ilmiah Card -->
+        <div class="card animate__animated animate__fadeInUp delay-1">
+          <div class="card-header">
+            <div class="card-icon">📚</div>
+            <h3>Karya Ilmiah</h3>
+          </div>
+          <div class="card-body">
+            <ul class="card-features">
+              <li><i class="fas fa-check"></i> Penelitian Kualitatif & Kuantitatif</li>
+              <li><i class="fas fa-check"></i> Review Literatur Sistematis</li>
+              <li><i class="fas fa-check"></i> Analisis Kasus Mendalam</li>
+              <li><i class="fas fa-check"></i> Artikel Ilmiah Jurnal</li>
+              <li><i class="fas fa-check"></i> Laporan Penelitian Lengkap</li>
+            </ul>
+            <button class="card-btn" onclick="window.location.href='https://wa.me/6285775085507?text=Halo%20saya%20ingin%20memesan%20jasa%20karya%20ilmiah%20di%20Trims.Project'">
+              <i class="fab fa-whatsapp"></i> Pesan Sekarang
+            </button>
+          </div>
+        </div>
+        
+        <!-- Pengolahan Data Card -->
+        <div class="card animate__animated animate__fadeInUp delay-2">
+          <div class="card-header">
+            <span class="card-badge">Populer</span>
+            <div class="card-icon">🧮</div>
+            <h3>Pengolahan Data</h3>
+          </div>
+          <div class="card-body">
+            <ul class="card-features">
+              <li><i class="fas fa-check"></i> Analisis SPSS & SmartPLS</li>
+              <li><i class="fas fa-check"></i> Data Entry & Cleaning</li>
+              <li><i class="fas fa-check"></i> Interpretasi Hasil Statistik</li>
+              <li><i class="fas fa-check"></i> Visualisasi Data Profesional</li>
+              <li><i class="fas fa-check"></i> Validasi & Reliabilitas</li>
+            </ul>
+            <button class="card-btn" onclick="window.location.href='https://wa.me/6285775085507?text=Halo%20saya%20ingin%20memesan%20jasa%20pengolahan%20data%20di%20Trims.Project'">
+              <i class="fab fa-whatsapp"></i> Pesan Sekarang
+            </button>
+          </div>
+        </div>
+        
+        <!-- Skripsi Card -->
+        <div class="card animate__animated animate__fadeInUp delay-3">
+          <div class="card-header">
+            <div class="card-icon">🎓</div>
+            <h3>Bimbingan Skripsi</h3>
+          </div>
+          <div class="card-body">
+            <ul class="card-features">
+              <li><i class="fas fa-check"></i> Penyusunan Proposal</li>
+              <li><i class="fas fa-check"></i> Bimbingan Per Bab</li>
+              <li><i class="fas fa-check"></i> Analisis Data Skripsi</li>
+              <li><i class="fas fa-check"></i> Revisi Komprehensif</li>
+              <li><i class="fas fa-check"></i> Konsultasi Khusus Dosen</li>
+            </ul>
+            <button class="card-btn" onclick="window.location.href='https://wa.me/6285775085507?text=Halo%20saya%20ingin%20memesan%20jasa%20bimbingan%20skripsi%20di%20Trims.Project'">
+              <i class="fab fa-whatsapp"></i> Pesan Sekarang
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="testimoni" class="section" style="background-color: #f4f4f4; padding: 4rem 2rem;">
-  <h2 class="section-title">Testimoni</h2>
-  <div class="slideshow-container" style="background-color: #ff7a00; padding: 2rem; border-radius: 12px;">
-    <div class="mySlides"><img src="testi.jpeg" alt="Testimoni 1"></div>
-    <div class="mySlides"><img src="testi2.jpeg" alt="Testimoni 2"></div>
-    <div class="mySlides"><img src="testi3.jpeg" alt="Testimoni 3"></div>
-    <div class="mySlides"><img src="testi4.jpeg" alt="Testimoni 4"></div>
-    <a class="prev" onclick="plusSlides(-1)">❮</a>
-    <a class="next" onclick="plusSlides(1)">❯</a>
-  </div>
-</section>
- <section id="konsultasi" class="section konsultasi-section">
-  <h2 class="section-title">Konsultasi Dengan Kami</h2>
-  <div class="konsultasi-card">
-    <div class="icon-wrap">
-      💬
+  <!-- Features Section -->
+  <section id="keunggulan" class="section" style="background-color: #f8f9fa;">
+    <div class="container">
+      <div class="section-title animate__animated animate__fadeIn">
+        <h2>Keunggulan Kami</h2>
+      </div>
+      <p class="section-subtitle animate__animated animate__fadeIn animate__delay-1s">Alasan mengapa ratusan klien mempercayakan kebutuhan akademik mereka kepada kami</p>
+      
+      <div class="features-grid">
+        <div class="feature-card animate__animated animate__fadeIn delay-1">
+          <div class="feature-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h3>Tim Profesional</h3>
+          <p>Dikerjakan oleh ahli dengan pengalaman lebih dari 5 tahun di bidang akademik dan penelitian</p>
+        </div>
+        
+        <div class="feature-card animate__animated animate__fadeIn delay-2">
+          <div class="feature-icon">
+            <i class="fas fa-infinity"></i>
+          </div>
+          <h3>Revisi Tanpa Batas</h3>
+          <p>Garansi revisi hingga Anda puas dengan hasil yang diberikan</p>
+        </div>
+        
+        <div class="feature-card animate__animated animate__fadeIn delay-3">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Tepat Waktu</h3>
+          <p>Komitmen menyelesaikan pekerjaan sesuai deadline yang disepakati</p>
+        </div>
+        
+        <div class="feature-card animate__animated animate__fadeIn delay-4">
+          <div class="feature-icon">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <h3>Harga Terjangkau</h3>
+          <p>Biaya kompetitif dengan kualitas terjamin</p>
+        </div>
+        
+        <div class="feature-card animate__animated animate__fadeIn delay-1">
+          <div class="feature-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>Konsultasi Gratis</h3>
+          <p>Diskusikan kebutuhan Anda tanpa biaya sebelum memulai proyek</p>
+        </div>
+        
+        <div class="feature-card animate__animated animate__fadeIn delay-2">
+          <div class="feature-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>Support 24/7</h3>
+          <p>Tim kami siap membantu kapan saja melalui WhatsApp dan email</p>
+        </div>
+      </div>
     </div>
-    <h3>Konsultasi via WhatsApp</h3>
-    <p>Butuh bantuan atau saran mengenai karya ilmiah, skripsi, atau data? Tim kami siap membantu secara profesional, cepat, dan ramah!</p>
-    <a href="https://wa.me/6285775085507?text=Halo%20saya%20ingin%20konsultasi%20tentang%20layanan%20Trims.Project.%20Mohon%20bantuannya." class="btn-konsultasi">
-      <i class="fas fa-comment-dots"></i> Konsultasi Sekarang
-    </a>
+  </section>
+
+  <!-- Testimonials Section -->
+<section id="testimoni" class="testimonials-section">
+  <div class="container">
+    <div class="section-title animate__animated animate__fadeIn">
+      <h2>Apa Kata Klien Kami?</h2>
+    </div>
+    <p class="section-subtitle animate__animated animate__fadeIn animate__delay-1s">Testimoni jujur dari mereka yang telah menggunakan layanan kami</p>
+    
+    <div class="testimonial-slider">
+      <div class="testimonial-wrapper">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-slide active">
+          <div class="testimonial-content">
+            <div class="testimonial-image">
+              <img src="testi.jpeg" alt="Testimoni 1" class="testimonial-avatar">
+              <div class="testimonial-quote-icon">
+                <i class="fas fa-quote-left"></i>
+              </div>
+            </div>
+            <div class="testimonial-text-content">
+              <p class="testimonial-text">"Bimbingan skripsi dari Trims.Project sangat membantu. Pembimbing saya puas dengan analisis data yang diberikan. Revisi dikerjakan dengan cepat dan akurat."</p>
+              <div class="testimonial-author-info">
+                <div class="testimonial-author">Dian Sastro</div>
+                <div class="testimonial-role">Mahasiswa S1 Universitas Indonesia</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="testimonial-image">
+              <img src="testi2.jpeg" alt="Testimoni 2" class="testimonial-avatar">
+              <div class="testimonial-quote-icon">
+                <i class="fas fa-quote-left"></i>
+              </div>
+            </div>
+            <div class="testimonial-text-content">
+              <p class="testimonial-text">"Hasil analisis data SPSS untuk penelitian saya sangat memuaskan. Penjelasannya detail dan mudah dipahami. Sangat recommended untuk yang kesulitan dengan statistik."</p>
+              <div class="testimonial-author-info">
+                <div class="testimonial-author">Budi Santoso</div>
+                <div class="testimonial-role">Peneliti Independen</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="testimonial-image">
+              <img src="testi3.jpeg" alt="Testimoni 3" class="testimonial-avatar">
+              <div class="testimonial-quote-icon">
+                <i class="fas fa-quote-left"></i>
+              </div>
+            </div>
+            <div class="testimonial-text-content">
+              <p class="testimonial-text">"Artikel jurnal yang dibuatkan lolos di jurnal Scopus berkat bantuan Trims.Project. Bahasa akademisnya sangat baik dan referensi terkini."</p>
+              <div class="testimonial-author-info">
+                <div class="testimonial-author">Dr. Rina Wijaya</div>
+                <div class="testimonial-role">Dosen Universitas Gadjah Mada</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 4 -->
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="testimonial-image">
+              <img src="testi4.jpeg" alt="Testimoni 4" class="testimonial-avatar">
+              <div class="testimonial-quote-icon">
+                <i class="fas fa-quote-left"></i>
+              </div>
+            </div>
+            <div class="testimonial-text-content">
+              <p class="testimonial-text">"Layanan bimbingan skripsi sangat membantu dari awal sampai akhir. Tim responsif dan mengerti kebutuhan mahasiswa. Hasilnya memuaskan dan sesuai harapan."</p>
+              <div class="testimonial-author-info">
+                <div class="testimonial-author">Andi Pratama</div>
+                <div class="testimonial-role">Mahasiswa S2 Universitas Brawijaya</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slider Controls -->
+      <div class="slider-controls">
+        <button class="slider-arrow prev" onclick="moveSlide(-1)">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="slider-dots">
+          <span class="slider-dot active" onclick="goToSlide(0)"></span>
+          <span class="slider-dot" onclick="goToSlide(1)"></span>
+          <span class="slider-dot" onclick="goToSlide(2)"></span>
+          <span class="slider-dot" onclick="goToSlide(3)"></span>
+        </div>
+        
+        <button class="slider-arrow next" onclick="moveSlide(1)">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
+  <!-- Consultation Section -->
+  <section id="konsultasi" class="consultation-section">
+    <div class="consultation-content animate__animated animate__fadeIn">
+      <h2 class="animate__animated animate__fadeInDown">Butuh Bantuan Akademik?</h2>
+      <p class="animate__animated animate__fadeInDown animate__delay-1s">Konsultasikan kebutuhan penelitian dan karya ilmiah Anda dengan tim profesional kami</p>
+      <a href="https://wa.me/6285775085507" class="btn-consultation animate__animated animate__pulse animate__infinite">
+        <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-  <p>Bagian dari <strong>rampungin.id</strong> &copy; 2025 – Trims.Project. Semua hak cipta dilindungi.</p>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Tentang Trims.Project</h3>
+        <p>Layanan profesional untuk kebutuhan karya ilmiah, penelitian, dan pengolahan data statistik dengan tim ahli berpengalaman.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/6285775085507"><i class="fab fa-whatsapp"></i></a>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+
+  <div class="footer-column">
+    <h3>Layanan Kami</h3>
+    <ul class="footer-links">
+      <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Karya Ilmiah</a></li>
+      <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Pengolahan Data</a></li>
+      <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Bimbingan Skripsi</a></li>
+      <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Analisis Statistik</a></li>
+      <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Konsultasi Penelitian</a></li>
+    </ul>
+  </div>
+  
+  <div class="footer-column">
+    <h3>Kontak Kami</h3>
+    <ul class="footer-links">
+      <li><a href="https://wa.me/6285775085507"><i class="fab fa-whatsapp"></i> +62 857-7508-5507</a></li>
+      <li><a href="mailto:trims.project@gmail.com"><i class="fas fa-envelope"></i> trims.project@gmail.com</a></li>
+      <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  <p>&copy; <span id="currentYear"></span> Trims.Project. All Rights Reserved.</p>
+</div>
 </footer>
-
-
-  <script>
-   let slideIndex = 0;
-  showSlides();
-
-  // Fungsi untuk mengatur slides
-  function plusSlides(n) {
-    slideIndex += n;
-    showSlides();
-  }
-
-  function showSlides() {
-    let slides = document.getElementsByClassName("mySlides");
-    if (slideIndex >= slides.length) slideIndex = 0;
-    if (slideIndex < 0) slideIndex = slides.length - 1;
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+ <!-- Floating Chat Button --> <div class="floating-chat" onclick="window.location.href='https://wa.me/6285775085507'"> <i class="fab fa-whatsapp"></i> </div> 
+ <script>
+ // Testimonial Slider Functionality
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dots = document.querySelectorAll('.slider-dot');
+  
+  function showSlide(index) {
+    // Wrap around if at ends
+    if (index >= slides.length) {
+      currentSlide = 0;
+    } else if (index < 0) {
+      currentSlide = slides.length - 1;
+    } else {
+      currentSlide = index;
     }
-    slides[slideIndex].style.display = "block";
-  }
-
-    // Toggle nav menu on mobile
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
     
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+    // Update slides
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentSlide);
     });
-	document.querySelectorAll('a.scroll-link').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetID = this.getAttribute('href');
-      const target = document.querySelector(targetID);
-      if (target) {
-        window.scrollTo({
-          top: target.offsetTop - 80, // biar gak ketutup navbar
-          behavior: 'smooth'
-        });
-      }
+    
+    // Update dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
     });
-  }); 
-  function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('show');
   }
-
-  // Tutup menu saat klik link di dalamnya
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.remove('show');
-    });
-  });
-  </script>
-
-</body>
-</html>
+  
+  function moveSlide(direction) {
+    showSlide(currentSlide + direction);
+  }
+  
+  function goToSlide(index) {
+    showSlide(index);
+  }
+  
+  // Auto slide every 5 seconds
+  setInterval(() => {
+    moveSlide(1);
+  }, 5000);
+  
+  // Initialize first slide
+  showSlide(0);
+ // Mobile Menu Toggle const hamburger = document.getElementById('hamburgerMenu'); const navLinks = document.getElementById('navLinks'); hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; }); // Close mobile menu when clicking on a link document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }); }); // Navbar scroll effect window.addEventListener('scroll', () => { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); } }); // Smooth scrolling for anchor links document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const targetId = this.getAttribute('href'); if (targetId === '#') return; const targetElement = document.querySelector(targetId); if (targetElement) { window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' }); } }); }); // Testimonial slider let currentTestimonial = 0; const testimonials = document.querySelectorAll('.testimonial'); const dots = document.querySelectorAll('.slider-dot'); function showTestimonial(index) { testimonials.forEach(testimonial => testimonial.classList.remove('active')); dots.forEach(dot => dot.classList.remove('active')); testimonials[index].classList.add('active'); dots[index].classList.add('active'); currentTestimonial = index; } // Auto slide testimonials setInterval(() => { currentTestimonial = (currentTestimonial + 1) % testimonials.length; showTestimonial(currentTestimonial); }, 5000); // Set current year in footer document.getElementById('currentYear').textContent = new Date().getFullYear(); // Animation on scroll const animateElements = document.querySelectorAll('.animate__animated'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const animation = entry.target.getAttribute('data-animate'); entry.target.classList.add(animation); observer.unobserve(entry.target); } }); }, { threshold: 0.1 }); animateElements.forEach(element => { observer.observe(element); }); 
+ </script>
+ </body>
+ </html>
