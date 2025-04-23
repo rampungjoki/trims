@@ -29,7 +29,16 @@
       --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
-
+  /* Add this to your existing CSS */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Optional: Add smooth transition for all scroll-triggered elements */
+  [id] {
+    scroll-margin-top: 80px; /* Adjust based on your navbar height */
+    transition: scroll-margin-top 0.3s ease;
+  }
     * {
       margin: 0; 
       padding: 0;
@@ -42,6 +51,7 @@
       color: var(--text);
       scroll-behavior: smooth;
       line-height: 1.6;
+	  overscroll-behavior-y: contain;
     }
 
     /* Header Styles */
@@ -596,7 +606,8 @@
   }
 
   @media (min-width: 768px) {
-    .testimonial-content {
+    
+	.testimonial-content {
       flex-direction: row;
       text-align: left;
       padding: 3rem;
@@ -612,6 +623,13 @@
       padding-right: 1rem;
     }
   }
+   html {
+    scroll-padding-top: 70px;
+  }
+  section {
+    scroll-margin-top: 70px;
+  }
+}
 
     /* Consultation Section */
     .consultation-section {
@@ -806,7 +824,13 @@
         justify-content: center;
       }
     }
-
+ html {
+    scroll-padding-top: 70px;
+  }
+  section {
+    scroll-margin-top: 70px;
+  }
+}
     @media (max-width: 576px) {
       .hero {
         padding: 5rem 1.5rem 3rem;
@@ -1000,28 +1024,12 @@
           <p>Dikerjakan oleh ahli dengan pengalaman lebih dari 5 tahun di bidang akademik dan penelitian</p>
         </div>
         
-        <div class="feature-card animate__animated animate__fadeIn delay-2">
-          <div class="feature-icon">
-            <i class="fas fa-infinity"></i>
-          </div>
-          <h3>Revisi Tanpa Batas</h3>
-          <p>Garansi revisi hingga Anda puas dengan hasil yang diberikan</p>
-        </div>
-        
         <div class="feature-card animate__animated animate__fadeIn delay-3">
           <div class="feature-icon">
             <i class="fas fa-clock"></i>
           </div>
           <h3>Tepat Waktu</h3>
           <p>Komitmen menyelesaikan pekerjaan sesuai deadline yang disepakati</p>
-        </div>
-        
-        <div class="feature-card animate__animated animate__fadeIn delay-4">
-          <div class="feature-icon">
-            <i class="fas fa-hand-holding-usd"></i>
-          </div>
-          <h3>Harga Terjangkau</h3>
-          <p>Biaya kompetitif dengan kualitas terjamin</p>
         </div>
         
         <div class="feature-card animate__animated animate__fadeIn delay-1">
@@ -1037,7 +1045,7 @@
             <i class="fas fa-headset"></i>
           </div>
           <h3>Support 24/7</h3>
-          <p>Tim kami siap membantu kapan saja melalui WhatsApp dan email</p>
+          <p>Tim kami siap membantu kapan saja melalui WhatsApp</p>
         </div>
       </div>
     </div>
@@ -1244,6 +1252,31 @@
   
   // Initialize first slide
   showSlide(0);
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        // Calculate the target position with navbar offset
+        const navbarHeight = document.getElementById('navbar').offsetHeight;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        // Smooth scroll with easing function
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Update URL hash without jumping
+        history.pushState(null, null, targetId);
+      }
+    });
+  });
  // Mobile Menu Toggle const hamburger = document.getElementById('hamburgerMenu'); const navLinks = document.getElementById('navLinks'); hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; }); // Close mobile menu when clicking on a link document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }); }); // Navbar scroll effect window.addEventListener('scroll', () => { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); } }); // Smooth scrolling for anchor links document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const targetId = this.getAttribute('href'); if (targetId === '#') return; const targetElement = document.querySelector(targetId); if (targetElement) { window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' }); } }); }); // Testimonial slider let currentTestimonial = 0; const testimonials = document.querySelectorAll('.testimonial'); const dots = document.querySelectorAll('.slider-dot'); function showTestimonial(index) { testimonials.forEach(testimonial => testimonial.classList.remove('active')); dots.forEach(dot => dot.classList.remove('active')); testimonials[index].classList.add('active'); dots[index].classList.add('active'); currentTestimonial = index; } // Auto slide testimonials setInterval(() => { currentTestimonial = (currentTestimonial + 1) % testimonials.length; showTestimonial(currentTestimonial); }, 5000); // Set current year in footer document.getElementById('currentYear').textContent = new Date().getFullYear(); // Animation on scroll const animateElements = document.querySelectorAll('.animate__animated'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const animation = entry.target.getAttribute('data-animate'); entry.target.classList.add(animation); observer.unobserve(entry.target); } }); }, { threshold: 0.1 }); animateElements.forEach(element => { observer.observe(element); }); 
  </script>
  </body>
